@@ -1,0 +1,14 @@
+h1 アップデート情報書き込み
+
+= form_with(model: @new, local: true) do |f|
+
+  .field
+    = f.label :head
+    = f.text_field :head, class: 'form-control'
+
+  .field
+    = f.label :article
+    = f.text_area :article, class: 'form-control'
+
+  .action
+    = f.submit "投稿", class: 'btn btn-primary'

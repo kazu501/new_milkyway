@@ -14,6 +14,7 @@ class NewsController < ApplicationController
 
   def create
   	@new = New.new(new_params)
+    @new.user_id = current_user.id
   	if @new.save
   	  redirect_to root_path
   	else

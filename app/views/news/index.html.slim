@@ -1,2 +1,5 @@
-h1 News#index
-p Find me in app/views/news/index.html.slim
+h1 アップデート情報
+
+- @news.each do |new|
+  h3 = link_to new.head, news_path(new)
+  p = new.article

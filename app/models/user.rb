@@ -7,6 +7,7 @@ class User < ApplicationRecord
   validates :username, presence: true, length: { maximum: 50 }
   validates :profile, length: { maximum: 500 }
   has_many :posts, dependent: :destroy
+  has_many :news, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   mount_uploader :avatar, AvatarUploader
