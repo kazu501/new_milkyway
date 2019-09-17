@@ -1,0 +1,7 @@
+- @user ||= current_user
+
+= link_to "フォロー", following_user_path(@user)
+strong = @user.followings.count
+
+= link_to "フォロワー", followers_user_path(@user)
+strong = @user.followers.count

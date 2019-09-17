@@ -1,0 +1,5 @@
+h1 follow
+- @user.followings.each do |user|
+  table
+    tr 
+      td = link_to user.username, user_path(user)

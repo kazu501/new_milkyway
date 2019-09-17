@@ -3,6 +3,16 @@ h2
   = resource_name.to_s.humanize
 = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
   = render "devise/shared/error_messages", resource: resource
+
+  - if current_user.persisted? && current_user.avatar?
+    = image_tag current_user.avatar.to_s, controls: true, width: 200, height: 200, id: "image", alt: "video image"
+      label = f.check_box :remove_avatar
+      | 画像を削除
+  - else
+    = image_tag 'no_avatar.png'
+    = f.hidden_field :avatar_cache
+  = f.file_field :avatar
+
   .field
     = f.label :username
     br

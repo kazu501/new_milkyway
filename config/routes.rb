@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'users/index'
-  get 'users/show'
   devise_for :users
   #root_path
   root 'posts#index'
@@ -8,5 +6,11 @@ Rails.application.routes.draw do
   resources :posts do
   	resources :comments, only: [:create, :destroy]
   end
-  resources :users, only: [:index, :show]
+  resources :users, only: [:index, :show] do
+  	member do
+     get :following, :followers
+    end
+  end
+  resources :relationships, only: [:create, :destroy]
+  resources :news
 end
