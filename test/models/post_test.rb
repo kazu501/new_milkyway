@@ -3,7 +3,7 @@ require 'test_helper'
 class PostTest < ActiveSupport::TestCase
 
   def setup
-    @post = Post.new(title: "Title1", description: "sutumei")
+    @post = Post.new(title: "Title1", description: "sutumei", image: "image.jpeg")
   end
 
   test "should be valid" do
@@ -17,7 +17,7 @@ class PostTest < ActiveSupport::TestCase
 
   test "description should be present" do
     @post.description = "     "
-    assert_not @post.valid?
+    assert @post.valid?
   end
 
   test "title should not be too long" do

@@ -4,8 +4,7 @@ h1 新着投稿
 
 - @posts.each do |post|
   ul
+    li = link_to image_tag(post.image_url.to_s, controls: true, width: 550, height: 400, id: "image", alt: "image"), post
     li = link_to post.title, post
-
-= link_to "new", new_post_path
 
 = paginate @posts
