@@ -1,4 +1,8 @@
-h1
-  | Posts#show
-p
-  | Find me in app/views/posts/show.html.erb
+
+h2 = @post.title
+
+p = @post.description
+
+= link_to 'edit', edit_post_path
+span |
+= link_to 'destroy', @post, method: :delete, data: { confirm: '削除してもよろしいですか？' }

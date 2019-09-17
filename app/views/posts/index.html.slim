@@ -3,4 +3,9 @@
 h1 新着投稿
 
 - @posts.each do |post|
-  
+  ul
+    li = link_to post.title, post
+
+= link_to "new", new_post_path
+
+= paginate @posts
