@@ -4,6 +4,25 @@ h2 = @post.title
 
 p = @post.description
 
-= link_to 'edit', edit_post_path
-span |
-= link_to 'destroy', @post, method: :delete, data: { confirm: '削除してもよろしいですか？' }
+- if user_signed_in? && @post.user.id == current_user.id
+  = link_to 'edit', edit_post_path
+  span |
+  = link_to 'destroy', @post, method: :delete, data: { confirm: '削除してもよろしいですか？' }
+
+
+p = link_to @post.user.username, user_path(@post.user)
+
+
+= form_for [@post, @comment] do |f|
+  = f.text_field :content, :placeholder => "コメントする..."
+  = f.submit '投稿', data: { confirm: "コメントを投稿しますか？"}, class: 'btn btn-primary'
+
+br
+
+- @comments.each do |comment|
+  = link_to "#{comment.user.username}", "/users/#{comment.user_id}"
+  p = comment.content
+  - if user_signed_in? && comment.user_id == current_user.id
+    = link_to "削除", [@post, comment], method: :delete, data: { confirm: '削除?' }
+  p = "作成日時:#{time_ago_in_words(comment.created_at)}前"
+  hr

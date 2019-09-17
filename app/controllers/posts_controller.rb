@@ -2,11 +2,15 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index
-  	@posts = Post.page(params[:page]).per(10)
+  	@q = Post.ransack(params[:q])
+    @posts = @q.result
+    @posts = @q.result.page(params[:page]).per(10)
   end
 
   def show
   	@post = Post.find(params[:id])
+    @comments = @post.comments
+    @comment = Comment.new
   end
 
   def new
@@ -15,6 +19,7 @@ class PostsController < ApplicationController
 
   def create 
   	@post = Post.new(post_params)
+    @post.user_id = current_user.id
   	if @post.save
       flash[:notice] = '投稿が完了しました。'
   	  redirect_to @post
