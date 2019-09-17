@@ -3,7 +3,8 @@
     = f.label :title, "タイトル"
     = f.search_field :title_cont, class: "search-field", :placeholder => "検索"
 
-    = f.submit "虫眼鏡", class: "btn btn-primary"
+    = button_tag type: 'submit', class: "btn btn-primary" do
+      i.fas.fa-search
 
 h1 新着投稿
 

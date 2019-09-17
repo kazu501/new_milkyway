@@ -4,7 +4,11 @@ h2 = @post.title
 
 p = @post.description
 
+i.far.fa-thumbs-up id= "likes_buttons_#{@post.id}"
+  = render partial: 'likes/like', locals: { post: @post, likes: @likes }
+
 - if user_signed_in? && @post.user.id == current_user.id
+  i.far.fa-edit
   = link_to 'edit', edit_post_path
   span |
   = link_to 'destroy', @post, method: :delete, data: { confirm: '削除してもよろしいですか？' }
@@ -15,7 +19,8 @@ p = link_to @post.user.username, user_path(@post.user)
 
 = form_for [@post, @comment] do |f|
   = f.text_field :content, :placeholder => "コメントする..."
-  = f.submit '投稿', data: { confirm: "コメントを投稿しますか？"}, class: 'btn btn-primary'
+  = button_tag type: 'submit', data: { confirm: "コメントを投稿しますか？"}, class: 'btn btn-primary' do
+    i.far.fa-paper-plane
 
 br
 
