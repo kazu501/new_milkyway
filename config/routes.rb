@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
   devise_for :users
   #root_path
-  root 'homes#index'
+  root "homes#top"
+  get "help" => "homes#help"
+  get "guidline" => "homes#guid"
+  get "convention" => "homes#conv"
+  get "privacypolicy" => "homes#priv"
+  get "contact" => "homes#contact"
 
-  resources :homes, only: [:index]
+
+  resources :homes, only: [:top, :help, :guid, :conv, :priv, :contact]
 
   resources :posts do
   	resources :comments, only: [:create, :destroy]

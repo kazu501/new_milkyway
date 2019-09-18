@@ -73,3 +73,6 @@ gem 'jquery-rails'
 gem 'carrierwave'
 gem 'counter_culture'
 gem 'font-awesome-sass'
+gem 'impressionist'
+
+
