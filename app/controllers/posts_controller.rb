@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  impressionist :actions=> [:show]
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -8,6 +9,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    impressionist(@post, nil, unique: [:session_hash])
     @comments = @post.comments
     @comment = Comment.new
   end

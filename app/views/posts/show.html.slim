@@ -4,6 +4,9 @@ h2 = @post.title
 
 p = @post.description
 
+i.fas.fa-eye
+  = @post.impressionist_count
+
 i.far.fa-thumbs-up id= "likes_buttons_#{@post.id}"
   = render partial: 'likes/like', locals: { post: @post, likes: @likes }
 
