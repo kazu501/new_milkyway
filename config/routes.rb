@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
   #root_path
-  root 'posts#index'
+  root 'homes#index'
+
+  resources :homes, only: [:index]
 
   resources :posts do
   	resources :comments, only: [:create, :destroy]

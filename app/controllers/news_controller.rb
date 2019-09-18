@@ -16,7 +16,7 @@ class NewsController < ApplicationController
   	@new = New.new(new_params)
     @new.user_id = current_user.id
   	if @new.save
-  	  redirect_to root_path
+  	  redirect_to news_path(@new)
   	else
   	  render 'new'
   	end
@@ -27,7 +27,7 @@ class NewsController < ApplicationController
 
   def update
   	if @new.update(new_params)
-      redirect_to root_path
+      redirect_to @new
     else
       render 'new'
     end
@@ -35,7 +35,7 @@ class NewsController < ApplicationController
 
   def destroy
     @new.destroy
-    redirect_to root_path
+    redirect_to news_index_path
   end
 
   def ensure_correct_user

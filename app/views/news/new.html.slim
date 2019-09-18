@@ -1,6 +1,6 @@
 h1 アップデート情報書き込み
 
-= form_with(model: @new, local: true) do |f|
+= form_for(@new, url: { action: "create" }) do |f|
 
   .field
     = f.label :head
@@ -12,3 +12,7 @@ h1 アップデート情報書き込み
 
   .action
     = f.submit "投稿", class: 'btn btn-primary'
+
+
+
+= link_to 'Back', news_index_path

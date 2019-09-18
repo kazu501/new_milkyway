@@ -1,5 +1,16 @@
 h1 アップデート情報編集
 
-= render 'news_form', new: @new
+= form_for(@new, url: { action: "update" }) do |f|
 
-= link_to 'Back', root_path
+  .field
+    = f.label :head
+    = f.text_field :head, class: 'form-control'
+
+  .field
+    = f.label :article
+    = f.text_area :article, class: 'form-control'
+
+  .action
+    = f.submit "投稿", class: 'btn btn-primary'
+
+= link_to 'Back', news_index_path

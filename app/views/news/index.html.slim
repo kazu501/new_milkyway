@@ -3,3 +3,6 @@ h1 アップデート情報
 - @news.each do |new|
   h3 = link_to new.head, news_path(new)
   p = new.article
+
+
+= link_to "new", new_news_path
