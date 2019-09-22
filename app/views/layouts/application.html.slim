@@ -17,7 +17,7 @@ html
           li = link_to "Logout", destroy_user_session_path, method: :delete, data: { confirm: 'ログアウトしますか?' }
         - else
           li = link_to "Login", new_user_session_path
-          li = link_to "Help", "#"
+          li = link_to "Help", help_path
     /.notifications
       - flash.each do |key, value|
         = content_tag(:div, value, class: key) 

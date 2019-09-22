@@ -74,5 +74,5 @@ gem 'carrierwave'
 gem 'counter_culture'
 gem 'font-awesome-sass'
 gem 'impressionist'
-
+gem 'redis-rails'
 
