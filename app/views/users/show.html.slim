@@ -1,6 +1,8 @@
 h1 = "#{@user.username} Profile Page"
 
-p = image_tag @user.avatar_url(:thumb) if @user.avatar.present? 
+p = image_tag @user.avatar_url(:thumb) if @user.avatar.present?
+
+p = simple_format text_url_to_link(h(@user.profile)).html_safe
 
 - if user_signed_in? && current_user != @user
 

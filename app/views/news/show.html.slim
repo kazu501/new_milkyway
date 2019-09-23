@@ -1,6 +1,6 @@
 h1 = @new.head
 
-p = @new.article
+p = simple_format text_url_to_link(h(@new.article)).html_safe
 
 
 = link_to "destroy", @new, method: :delete, data: { confirm: 'destroy?' } 
