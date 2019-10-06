@@ -2,6 +2,8 @@ h1 = @new.head
 
 p = simple_format text_url_to_link(h(@new.article)).html_safe
 
+p = "更新日：#{@new.updated_at.strftime("%-Y年%-m月%-d日")}"
+
 
 = link_to "destroy", @new, method: :delete, data: { confirm: 'destroy?' } 
 
