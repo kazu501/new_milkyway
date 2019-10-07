@@ -1,5 +1,37 @@
 h1 toppage!!
 
-p = link_to "PostIndex", posts_path
+br
 
-p = link_to "NewsIndex", news_index_path
+h3 お知らせ
+
+- @news.last(3).each do |new|
+  h5 = link_to new.head, news_path(new)
+  p = new.article.truncate(70, omission: '...')
+  = link_to "続きを読む", news_path(new)
+  p = new.updated_at.strftime("%-Y年%-m月%-d日")
+
+p = link_to "過去のお知らせ", news_index_path
+
+
+
+br
+br
+br
+br
+
+h3 新着投稿作品
+- @posts.first(5).each do |post|
+  li = link_to image_tag(post.image_url.to_s, controls: true, width: 550, height: 400, id: "image", alt: "image"), post
+  li = link_to post.title, post
+  li = link_to "from #{post.user.username}", user_path(post.user)
+  hr
+
+p = link_to "もっと見る", posts_path
+
+
+br
+br
+br
+br
+br
+br

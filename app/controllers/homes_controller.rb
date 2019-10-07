@@ -1,6 +1,8 @@
 class HomesController < ApplicationController
 
   def top
+    @news = New.all.order(id: "DESC")
+    @posts = Post.all.order(id: "DESC")
   end
 
   def help
